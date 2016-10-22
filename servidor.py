@@ -199,23 +199,12 @@ class Servidor(QtGui.QMainWindow, servidorUi):
 		self.misViboras.append(vivora)
 		return {"id": vivora.id, "color": {"r": vivora.color[0], "g": vivora.color[1], "b": vivora.color[2]}}
 
-	def dentro(self, tekayas):
-		for i in range[len(self.misViboras)]:
-			if self.misViboras[i].id == tekayas:
-				return True
-
 	def camba_direccion(self,identificador,direccioname):
-		if self.dentro(identificador):
-			if direccioname == 0:
-				self.dire = 0
-			if direccioname == 1:
-				self.dire = 1
-			if direccioname == 2:
-				self.dire = 2
-			if direccioname == 3:
-				self.dire = 3
-		else:
-			return "No esta la serpiente en el juego"
+		ladvd = None
+		for i in range(len(self.misViboras)):
+			if self.misViboras[i].id == identificador:
+				ladvd = self.misViboras[i]
+				ladvd.direccion = direccioname
 
 	def estado_del_juego(self):
 		return {"espera": self.espera.value(), "tamX": self.tableWidget.columnCount(), "tamY": self.tableWidget.rowCount(), "vivoras":self.misViborasInfo}
